@@ -1,0 +1,43 @@
+<!-- CREAR UN PROGRAMA QUE LE PERMITA AL USUARIO SABER SI UN NUMERO ES PAR O NO -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2</title>
+  <style>
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="">
+    <label for="number">Ingrese un número</label>
+    <input type="text" id="number">
+    <br>
+    <button type="button" id="button">Sera par?</button>
+  </form>
+  <p id="outputReceptor"></p>
+
+
+
+
+  <script>
+    document.getElementById('button').addEventListener('click', () => {
+      let number = parseInt(document.getElementById('number').value);
+      let result;
+      (number % 2 === 0) ? result = `El numero ingresado (${number}) SI es par` : result = `El numero ingresado (${number}) NO es par`
+
+      let output = document.getElementById('outputReceptor')
+      output.textContent = result;
+    })
+
+  </script>
+</body>
+
+</html>

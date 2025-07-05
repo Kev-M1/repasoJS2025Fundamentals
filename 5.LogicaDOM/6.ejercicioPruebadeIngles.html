@@ -1,0 +1,100 @@
+<!-- Crear una Prueba de Ingles de seleccion multiple, que tenga 4 preguntas y al final le diga al usuario cuantas saco buenas y cuantas malas, la prueba solo se gana si la cantidad de respuestas correctas es >= 3 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 6</title>
+  <style>
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>English Test</h1>
+  <form action="">
+    <div class="questionDiv">
+      <label for="question1"> 1. Como se dice rojo en ingles?</label>
+      <select name="question1" id="question1">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="yes">Red</option>
+        <option value="no">Blue</option>
+        <option value="no">Yellow</option>
+      </select>
+    </div>
+    <br> <br>
+    <div class="questionDiv">
+      <label for="question2"> 2. Que significa Cousin? </label>
+      <select name="question2" id="question2">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="no">Abuelo</option>
+        <option value="no">Tio</option>
+        <option value="yes">Primo</option>
+      </select>
+    </div>
+    <br> <br>
+    <div class="questionDiv">
+      <label for="question3"> 3. Como se dice Cielo en Ingles? </label>
+      <select name="question3" id="question3">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="no">River</option>
+        <option value="no">Earth</option>
+        <option value="yes">Sky</option>
+      </select>
+    </div>
+    <br> <br>
+    <div class="questionDiv">
+      <label for="question4"> 4. Como se dice Navidad en Ingles? </label>
+      <select name="question4" id="question4">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="yes"> Christmas </option>
+        <option value="no"> Festival </option>
+        <option value="no"> December </option>
+      </select>
+    </div>
+    <br> <br>
+    <button type="button" id="button"> Calificar </button>
+  </form>
+  <p id="output"></p>
+
+
+
+
+
+
+  <script>
+    //Evento
+    document.getElementById('button').addEventListener('click', () => {
+      const answer1 = (document.getElementById('question1').value);
+      const answer2 = (document.getElementById('question2').value);
+      const answer3 = (document.getElementById('question3').value);
+      const answer4 = (document.getElementById('question4').value);
+      const output = (document.getElementById('output'));
+
+      let answers = [answer1, answer2, answer3, answer4];
+      let correctAnswers = 0;
+      let incorrectAnswers = 0;
+      let qualification;
+
+      for (const answer of answers) {
+        (answer === 'yes') ? (correctAnswers += 1) : (incorrectAnswers += 1);
+      }
+      (correctAnswers >= 3) ? (qualification = 'Aprobo') : (qualification = 'Reprobo');
+
+      output.innerText = `
+      Prueba finalizada.
+      Respuestas Correctas: ${correctAnswers}
+      Respuestas Incorrectas: ${incorrectAnswers}
+      Calificación: ${qualification}
+      `
+    })
+
+  </script>
+</body>
+
+</html>

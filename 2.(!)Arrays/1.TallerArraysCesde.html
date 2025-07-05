@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practica Arrays</title>
+  <style>
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    /* Ejercicio 1
+    1.	Guarda en un vector, 5 frutas y muestra las 3 del medio
+    */
+    console.log(`Ejercicio 1`);
+    const fruitsArray = ['manzana', 'pera', 'uva', 'sandia', 'coco'];
+    let middleFruitsArray = fruitsArray.slice(1, 4);
+    console.log(middleFruitsArray);
+    console.log(`- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -`);
+
+    /*
+    2.	Declara un array que vamos a llamar “clasificaciones” con los siguientes valores(Tener en cuenta que la lista esta en orden descendente, osea el primer puesto lo ocupa ana):
+    'Ana', 'Oswaldo', 'Raúl', 'Celia', 'María', 'Antonio' (Los cambios son acumulativos)
+    a.	Celia adelanta a Raul
+    b.	Antonio es descalificado y se elimina del concurso
+    c.	Detrás de Ana y adelante de Oswaldo se clasifican dos nuevos concursantes: Roberto y Amaya, en ese orden
+    d.	Hay una nueva participante que pasa a encabezar la clasificación: Marta
+    */
+
+    console.log(`Ejercicio 2`);
+    const clasificaciones = ['Ana', 'Oswaldo', 'Raúl', 'Celia', 'María', 'Antonio'];
+    const clasificacionesCopy = clasificaciones.slice();
+
+    console.log(clasificaciones);
+
+
+    //a.	Celia adelanta a Raul
+    clasificacionesCopy.splice(2, 2, 'Celia', 'Raúl');
+    console.log(`a.Celia adelanta a Raul: ${clasificacionesCopy}`);
+
+    //b.	Antonio es descalificado y se elimina del concurso
+    clasificacionesCopy.pop();
+    console.log(`b.Antonio es descalificado y se elimina del concurso: ${clasificacionesCopy}`);
+
+
+    //c.	Detrás de Ana y adelante de Oswaldo se clasifican dos nuevos concursantes: Roberto y Amaya, en ese orden
+    clasificacionesCopy.splice(1, 0, 'Roberto', 'Amaya');
+    console.log(`c.Detrás de Ana y adelante de Oswaldo se clasifican dos nuevos concursantes: Roberto y Amaya, en ese orden ${clasificacionesCopy}
+    `);
+
+    //d.	Hay una nueva participante que pasa a encabezar la clasificación: Marta
+    clasificacionesCopy.unshift('Marta')
+    console.log(`d.Hay una nueva participante que pasa a encabezar la clasificación: Marta ${clasificacionesCopy}`);
+    console.log(`- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -`);
+
+
+    /*
+    3. arreglo1 = [3, 5, 9, 10, 35, 42, 12, 22, 25]; arreglo2 = [9, 5, 33, 12, 7, 20, 22, 3, 8]; de los anteriores arreglos mostrar en forma de (tabla de multiplicar) la suma de los elementos del arreglo 1 con los elementos del arreglo 2 también sumar el total de cada arreglo.
+    */
+    console.log(`Ejercicio 3`);
+    arreglo1 = [3, 5, 9, 10, 35, 42, 12, 22, 25];
+    arreglo2 = [9, 5, 33, 12, 7, 20, 22, 3, 8];
+
+    let result;
+    let resultArray = [];
+    let i = 0;
+    for (const element of arreglo1) {
+      result = element + arreglo2[i];
+      resultArray.push(result)
+      console.log(`${element} + ${arreglo2[i]} = ${result}`);
+    }
+
+    const sumatoriaArreglo1 = arreglo1.reduce((acumulador, valorActual) => {
+      return (acumulador + valorActual);
+    }, 0);
+    const sumatoriaArreglo2 = arreglo2.reduce((acumulador, valorActual) => {
+      return (acumulador + valorActual);
+    }, 0);
+    const sumatoriaArregloResultante = resultArray.reduce((acumulador, valorActual) => {
+      return (acumulador + valorActual);
+    }, 0);
+    console.log(sumatoriaArreglo1, sumatoriaArreglo2, sumatoriaArregloResultante);
+    console.log(`- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -`);
+
+
+    // 4. Escribe un programa que utilice el array secuencia para imprimir en la consola la secuencia original y su versión invertida, alternando en cada paso del bucle, la idea es construir un tablero de ajedrez con dicho patron. (8x8)
+    // let secuencia = ['O', '*', 'O', '*', 'O', '*', 'O', '*'];
+
+    console.log(`Ejercicio 4`);
+
+    let secuencia = ['O', '*', 'O', '*', 'O', '*', 'O', '*'];
+    let secuenciaCopy = [...secuencia];
+    let secuenciaInvertida = [...secuencia].reverse();
+
+    for (let x = 0; x < secuenciaCopy.length; x++) {
+      (x % 2 == 0) ? console.log(secuenciaCopy) : console.log(secuenciaInvertida);;
+    }
+    console.log(`- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -`);
+
+
+    /*
+    5.	Del siguiente arreglo ['zanahoria', 'banano', 'manzana', 'pera', 'cebolla', 'papa', 'fresas', 'Ajo', 'Sandía'] mostrar en el navegador en cual posición se encuentran las frutas y en cual posición las verduras dentro de dicho array.
+    const foodList = ['zanahoria', 'banano', 'manzana', 'pera', 'cebolla', 'papa', 'fresas', 'Ajo', 'Sandía'];
+    */
+
+    console.log(`Ejercicio 5`);
+    const foodList = ['zanahoria', 'banano', 'manzana', 'pera', 'cebolla', 'papa', 'fresas', 'Ajo', 'Sandía'];
+    const fruitsListArray = ['banano', 'manzana', 'pera', 'fresas', 'Sandía'];
+    const vegetablesListArray = ['zanahoria', 'cebolla', 'papa', 'Ajo'];
+
+    for (let index = 0; index < foodList.length; index++) {
+      if (fruitsListArray.includes(foodList[index])) {
+        console.log(`Fruta: ${foodList[index]} , i: ${index}`);
+      }
+
+      if (vegetablesListArray.includes(foodList[index])) {
+        console.log(`Verdura: ${foodList[index]} , i: ${index}`);
+      }
+    }
+
+  </script>
+</body>
+
+</html>
