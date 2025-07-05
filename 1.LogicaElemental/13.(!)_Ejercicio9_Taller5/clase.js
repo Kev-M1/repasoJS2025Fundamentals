@@ -7,70 +7,70 @@ Costo de los pasajes:
 Elabore un algoritmo que permita realizar un registro para cada vehiculo ingresado al final de la jornada, dicho registro debe mostrar todos los datos anteriormente mencionados
 */
 
-
-
-function calculateDriverPayment(recolectedMoneyByDriver) {
-    return (recolectedMoneyByDriver * (20 / 100));
+const calculateRecolectedMoney = function (tickectCost, numberOfPassengersTransported) {
+  return (tickectCost * numberOfPassengersTransported)
 }
 
-function calculateRecolectedMoney(numberOfPassengersTransported, ticketCost) {
-    return (numberOfPassengersTransported * ticketCost);
+const calculateDriverPayment = function (recolectedMoney) {
+  return (recolectedMoney * (20 / 100))
 }
 
-
-const busTicketCost = 2200;
-const busetaTicketCost = 2500;
-const colectivoTicketCost = 3500;
 let driverName;
-let ticketCost;
 let vehiculePlate;
-let typeOfVehicle;
+let typeOfVehicule;
 let numberOfPassengersTransported;
+let tickectCost;
 let recolectedMoney;
 let driverPayment;
+let recordsStatus;
 let i = 1;
 
-
-let newRecordControl = prompt(`Desea ingresar un nuevo registro?`).toLocaleLowerCase();
-
-
-
-
-while (newRecordControl === 'si' || newRecordControl === 's') {
-    console.log(i);
-    driverName = prompt('Ingrese el nombre del conductor del vehiculo');
-    vehiculePlate = prompt('Ingrese el número de placa del vehiculo');
-    typeOfVehicle = parseInt(prompt('Tipo de vehiculo que conduce (1= bus, 2= buseta, 3= colectivo)'));
-    if (typeOfVehicle === 1) {
-        typeOfVehicle = 'bus';
-        ticketCost = busTicketCost;
-    } else if (typeOfVehicle === 2) {
-        typeOfVehicle = 'buseta';
-        ticketCost = busetaTicketCost;
-    } else if (typeOfVehicle === 3) {
-        typeOfVehicle = 'colectivo';
-        ticketCost = colectivoTicketCost;
-    }
-    numberOfPassengersTransported = parseInt(prompt(`Cuantos pasajeros transporto durante la jornada?`));
-    recolectedMoney = calculateRecolectedMoney(numberOfPassengersTransported, ticketCost);
-    driverPayment = calculateDriverPayment(recolectedMoney);
-
-    //Información en pantalla
-    console.log(`Registro #${i}`);
-    console.log(`Nombre del conductor: ${driverName}`);
-    console.log(`Número de placa del vehiculo: ${vehiculePlate}`);
-    console.log(`Tipo de vehiculo: ${typeOfVehicle}`);
-    console.log(`Costo del pasaje: ${ticketCost}`);
-    console.log(`Numero de pasajeros transportados en la jornada: ${numberOfPassengersTransported}`);
-    console.log(`Dinero recolectado: ${recolectedMoney}`);
-    console.log(`Valor del pago correspondiente al conductor: ${driverPayment}`);
+const busTickectCost = 2200;
+const busetaTickectCost = 2500;
+const colectivoTickectCost = 3500;
 
 
-    //Pregunta para saber si se desea ingresar mas registros
-    newRecordControl = prompt(`Desea ingresar un nuevo registro?`).toLocaleLowerCase()
-    if (newRecordControl === 'no' || newRecordControl === 'n') {
-        alert('Registros completados con exito')
-        break;
-    }
-    i += 1;
+recordsStatus = prompt('Desea ingresar un nuevo registro?').toLocaleLowerCase();
+//El cilco muestra información progresivamente pero solo despues de recargar la pagina minimo una vez
+while (recordsStatus === 's' || recordsStatus === 'si') {
+
+  driverName = prompt(`Ingrese el nombre del conductor`);
+  vehiculePlate = prompt(`Ingrese el número de placa del vehiculo`);
+  numberOfPassengersTransported = parseInt(prompt(`Ingrese cuantos pasajeros transporto durante la jornada?`));
+  typeOfVehicule = prompt('Que tipo de vehiculo maneja el conductor? (1= bus, 2=buseta, 3=colectivo)');
+
+  switch (typeOfVehicule) {
+    case '1':
+      typeOfVehicule = 'Bus';
+      tickectCost = busTickectCost;
+      break;
+    case '2':
+      typeOfVehicule = 'Buseta';
+      tickectCost = busetaTickectCost;
+      break;
+    case '3':
+      typeOfVehicule = 'Colectivo';
+      tickectCost = colectivoTickectCost;
+      break;
+  }
+
+  recolectedMoney = calculateRecolectedMoney(tickectCost, numberOfPassengersTransported);
+  driverPayment = calculateDriverPayment(recolectedMoney);
+
+  //Información en pantalla
+  console.log(`Registro ${i}`);
+  console.log(`Nombre del conductor: ${driverName}`);
+  console.log(`Placa del vehiculo: ${vehiculePlate}`);
+  console.log(`Tipo de vehiculo: ${typeOfVehicule}`);
+  console.log(`Número de pasajeros transportados: ${numberOfPassengersTransported}`);
+  console.log(`Costo del pasaje: ${tickectCost}$`);
+  console.log(`Dinero recolectado durante la jornada: ${recolectedMoney}$`);
+  console.log(`Pago correspondiente al conductor: ${driverPayment}$`);
+  console.log(``);
+
+
+
+  i += 1;
+  recordsStatus = prompt(`Desea ingresar un nuevo registro?`).toLocaleLowerCase();
 }
+
