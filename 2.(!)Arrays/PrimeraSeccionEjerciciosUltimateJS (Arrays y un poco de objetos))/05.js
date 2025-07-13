@@ -1,4 +1,4 @@
-// crear una función que tome un array de objetos y devuelva un array de pares, cada array de ese ultimo debe tener un identificador y un objeto, el id debe extraerse del propio objeto original.
+// crear una función que tome un array conformado por objetos y devuelva un array de pares(ver notas), cada array de ese ultimo debe tener un identificador y un objeto, el id debe extraerse del propio objeto original.
 //Objeto original:
 //let users = [
 //     { id: 131, name: 'Nicolas' },
@@ -17,6 +17,9 @@
 // ];
 
 
+
+
+// Objeto original:
 let users = [
     { id: 131, name: 'Nicolas' },
     { id: 567, name: 'Ernesto' },
@@ -24,16 +27,34 @@ let users = [
     { id: 764, name: 'Roberto' },
 ]
 
+//Solucion 1
+// const createPairsArray = (inputArray) => {
+//     let pairsArray = [];
+//     for (const user of inputArray) {
+//         let pairElement = [user.id, user];
+//         pairsArray.push(pairElement);
+//     }
+//     return pairsArray;
+// };
+// let result = createPairsArray(users);
+// console.log(result);
 
 
-function createPairsArray(inputArray) {
-    let pairArray = [];
-    for (const user of inputArray) {
-        let element = [user.id, user];
-        pairArray.push(element);
-    }
-    return pairArray;
-}
+//Solucion 2
+
+const createPairsArray = (inputArray) => {
+    return inputArray.map((user) => [user.id, user]);
+};
 
 let result = createPairsArray(users);
 console.log(result);
+
+
+
+
+
+
+
+
+
+

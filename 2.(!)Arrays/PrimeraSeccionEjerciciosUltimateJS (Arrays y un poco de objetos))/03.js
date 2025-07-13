@@ -2,11 +2,11 @@
 
 let arrayExample = [234, -22, 98, 12, 0, -34, 65, -5, 45, 88]
 
-function getMaxAndMinNumbers(inputArray) {
-    let maxValue = Math.max(...inputArray);
+const getMaxAndMinValuesFromArray = (inputArray) => {
     let minValue = Math.min(...inputArray);
-    return { maxValue, minValue }
-}
+    let maxValue = Math.max(...inputArray);
+    return { minValue, maxValue };
+};
 
-let result = getMaxAndMinNumbers(arrayExample);
-console.log(result);
+let limitValues = getMaxAndMinValuesFromArray(arrayExample);
+console.log(limitValues);

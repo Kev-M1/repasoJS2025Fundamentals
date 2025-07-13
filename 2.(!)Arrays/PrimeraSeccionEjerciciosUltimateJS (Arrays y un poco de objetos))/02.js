@@ -2,9 +2,10 @@
 
 let arrayExample = [23, 92, 83, 54, 76];
 
-function getElementByIndex(index, inputArray) {
-    return (inputArray[index]);
-}
 
-let element = getElementByIndex(1, arrayExample);
+const getElementFromArrayByIndex = (inputArray, index) => {
+    return (inputArray[index])
+};
+
+let element = getElementFromArrayByIndex(arrayExample, 1)
 console.log(element);

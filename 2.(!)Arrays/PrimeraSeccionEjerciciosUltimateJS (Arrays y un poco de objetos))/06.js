@@ -8,14 +8,17 @@ let pairsArray = [
     [764, { id: 764, name: 'Roberto' }],
 ];
 console.log({ pairsArray });
-let pairsArrayCopy = [...pairsArray];
 
-function createNewArray(inputArray) {
-    let newArray = [];
-    newArray = inputArray.map((pairElement) => pairElement.slice(1));
-    return newArray;
-}
+const createObjectsArray = (inputArray) => {
+    let objectsArray = [];
+    for (const pair of inputArray) {
+        let object = pair[1];
+        objectsArray.push(object);
+    }
+    return objectsArray;
+};
 
-let result = createNewArray(pairsArrayCopy);
-console.log({ result });
+let result = createObjectsArray(pairsArray);
+console.log(result);
+
 

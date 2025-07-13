@@ -1,12 +1,11 @@
-// crear una función que me permita saber cual es el mayor de los numeros de una lista
+// crear una función que me permita saber cual es el mayor de los numeros de un array
 
 
 let numbersList = [23, 45, 66, 192, 456, 233];
 
-
-function getMaxNumber(inputArray) {
-    let result = Math.max(...inputArray);
-    return result
+const getMaxNumber = (inputArray) => {
+  return Math.max(...inputArray);
 }
 
-console.log(getMaxNumber(numbersList));
+let maxNumber = getMaxNumber(numbersList);
+console.log(maxNumber);

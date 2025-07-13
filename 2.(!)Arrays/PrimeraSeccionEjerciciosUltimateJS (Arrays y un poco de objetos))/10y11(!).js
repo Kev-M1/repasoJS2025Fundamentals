@@ -1,4 +1,4 @@
-//Crear una función que me muestre los usuarios de pago solamente y otra que me muestre la cantidad de usuarios suscrita a cada plan (los 3 grupos)
+//Crear una función que me muestre los usuarios de pago solamente y otra que me muestre la cantidad de usuarios suscrita a cada plan, osea que los clasifique por plan (los 3 grupos)
 // const usuarios = [
 //   { edad: 17, nombre: 'nico', plan: 'premium' },
 //   { edad: 13, nombre: 'daniela', plan: 'free' },
@@ -7,46 +7,40 @@
 //   { edad: 25, nombre: 'sara', plan: 'gold' },
 // ]
 
-const usuarios = [
+const users = [
   { edad: 17, nombre: 'nico', plan: 'premium' },
   { edad: 13, nombre: 'daniela', plan: 'free' },
   { edad: 32, nombre: 'juliana', plan: 'free' },
   { edad: 25, nombre: 'felipe', plan: 'gold' },
   { edad: 25, nombre: 'sara', plan: 'gold' },
 ]
-console.log(usuarios);
+
+const getPayingUsers = (inputArray) => {
+  return inputArray.filter((user) => user.plan == 'premium' || user.plan == 'gold');
+};
+console.log(getPayingUsers(users));
 
 
-function clasificateUsersByPlan(inputArray) {
+const clasificateUsersByPlan = (inputArray) => {
   let premiumUsers = [];
-  let goldUsers = [];
   let freeUsers = [];
-  let clasification = {};
-
-  premiumUsers = inputArray.filter((user) => user.plan == 'premium');
-  goldUsers = inputArray.filter((user) => user.plan == 'gold');
-  freeUsers = inputArray.filter((user) => user.plan == 'free');
-
-  clasification = { freeUsers, premiumUsers, goldUsers };
-  return clasification;
-}
-
-
-function getPaidUsers(inputArray) {
-  let paidUsers = [];
-
-  for (user of inputArray) {
-    if ((user.plan === 'gold') || (user.plan === 'premium')) {
-      paidUsers.push(user);
+  let goldUsers = [];
+  let classificationObject = {};
+  for (const user of inputArray) {
+    if (user.plan == 'premium') {
+      premiumUsers.push(user);
+    } else if (user.plan == 'gold') {
+      goldUsers.push(user);
+    } else if (user.plan == 'free') {
+      freeUsers.push(user);
     }
   }
-  return paidUsers
-}
-
-let result1 = clasificateUsersByPlan(usuarios);
-let result2 = getPaidUsers(usuarios);
-
-console.log(result1);
-console.log(result2);
-
-
+  classificationObject = {
+    premiumUsers: premiumUsers,
+    freeUsers: freeUsers,
+    goldUsers: goldUsers,
+  }
+  return classificationObject
+};
+let clasification = clasificateUsersByPlan(users);
+console.log({ clasification });

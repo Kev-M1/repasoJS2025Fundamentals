@@ -14,29 +14,29 @@ let originalArray = [
   ['array anidado'],
   {},
 ];
+//
 
-function classifyAccordingToDataType(inputArray) {
-  let stringsElements = [];
-  let numbersElements = [];
-  let objectsElements = [];
+const classifyAccordingToDataType = (inputArray) => {
+  let dataType;
   let classificationObject = {};
-
-  for (const element of inputArray) {
-    if (typeof (element) === 'string') {
-      stringsElements.push(element);
-    }
-    if (typeof (element) === 'number') {
-      numbersElements.push(element);
-    }
-    if (typeof (element) === 'object') {
-      objectsElements.push(element);
+  let numberValues = [];
+  let stringValues = [];
+  let objectValues = [];
+  for (let i = 0; i < inputArray.length; i++) {
+    dataType = typeof (inputArray[i])
+    if (dataType == 'number') {
+      numberValues.push(inputArray[i]);
+    } else if (dataType == 'string') {
+      stringValues.push(inputArray[i]);
+    } else if (dataType == 'object') {
+      objectValues.push(inputArray[i]);
     }
   }
-  classificationObject = { stringsElements, numbersElements, objectsElements };
+  classificationObject = { numbers: numberValues, strings: stringValues, objects: objectValues }
   return classificationObject
-}
+};
 
-let result = classifyAccordingToDataType(originalArray);
+let result = classifyAccordingToDataType(originalArray)
 console.log(result);
 
 
