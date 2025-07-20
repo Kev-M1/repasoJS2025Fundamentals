@@ -1,0 +1,44 @@
+<!-- Crear un Menu de opciones mediante la etiqueta select y, en conjunto con JS alamacenar el valor seleccionado por el usuario en una variable y mostrarlo en pantalla-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 3</title>
+  <style>
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="">
+    <select name="fruitsList" id="fruitsList">
+      <option value=" - - - - - - - "> - - - - - - - </option>
+      <option value="manzana"> Manzana </option>
+      <option value="naranja"> Naranja </option>
+      <option value="pera"> Pera </option>
+      <option value="uva"> Uva </option>
+      <option value="toronja"> Toronja </option>
+    </select>
+  </form>
+  <p id="userChoice"></p>
+
+
+  <script>
+    document.getElementById('fruitsList').addEventListener('change', () => {
+      let fruit = document.getElementById('fruitsList').value;
+      console.log(fruit);
+      let output = document.getElementById('userChoice');
+      output.textContent = fruit;
+    })
+
+
+  </script>
+</body>
+
+</html>

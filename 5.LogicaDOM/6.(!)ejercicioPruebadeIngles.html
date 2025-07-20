@@ -1,0 +1,89 @@
+<!-- Crear una Prueba de Ingles de seleccion multiple, que tenga 4 preguntas y al final le diga al usuario cuantas saco buenas y cuantas malas, la prueba solo se gana si la cantidad de respuestas correctas es >= 3 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio6DOM</title>
+  <style>
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>English Test</h1>
+  <form action="">
+    <div class="questionDiv">
+      <label for="question1"> 1. Como se dice ROJO en inglés?</label>
+      <select name="question1" id="question1" class="question-node">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="true"> Red </option>
+        <option value="false"> Blue </option>
+        <option value="false"> Yellow </option>
+      </select>
+    </div>
+    <div class="questionDiv">
+      <label for="question2"> 2. Como se dice PRIMO en inglés?</label>
+      <select name="question2" id="question2" class="question-node">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="false"> Uncle </option>
+        <option value="true"> Cousin </option>
+        <option value="false"> Son </option>
+      </select>
+    </div>
+    <div class="questionDiv">
+      <label for="question3"> 3. Como se dice NAVIDAD en inglés?</label>
+      <select name="question3" id="question3" class="question-node">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="false"> Spring </option>
+        <option value="false"> Season </option>
+        <option value="true"> Christmas </option>
+      </select>
+    </div>
+    <div class="questionDiv">
+      <label for="question4"> 4. Como se dice CIELO en inglés?</label>
+      <select name="question4" id="question4" class="question-node">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="true"> Sky </option>
+        <option value="false"> Earth </option>
+        <option value="false"> Water </option>
+      </select>
+    </div>
+    <button type="button" id="triggerButton"> Enviar respuestas </button>
+  </form>
+  <p id="resultBox"></p>
+
+
+
+
+
+  <script>
+    let triggerButton = document.querySelector('#triggerButton');
+
+    triggerButton.addEventListener('click', (event) => {
+      let userAnswersNodeList = document.querySelectorAll('.question-node');
+      let correctAnswers = [];
+      let incorrectAnswers = [];
+      let resultBox = document.querySelector('#resultBox');
+
+
+
+      userAnswersNodeList.forEach((userAnswer) => {
+        (userAnswer.value === 'true') ? (correctAnswers.push(userAnswer.value)) : (incorrectAnswers.push(userAnswer.value))
+      });
+
+      (correctAnswers.length >= 3)
+        ? (resultBox.textContent = `Aprovó, Respuestas correctas: ${correctAnswers.length} Respuestas incorrectas: ${incorrectAnswers.length}`)
+        : (resultBox.textContent = `Perdió, Respuestas correctas: ${correctAnswers.length} Respuestas incorrectas: ${incorrectAnswers.length}`);
+    })
+
+
+  </script>
+</body>
+
+</html>

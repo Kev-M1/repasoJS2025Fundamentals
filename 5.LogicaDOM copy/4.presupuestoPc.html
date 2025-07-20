@@ -1,0 +1,71 @@
+<!-- Crear un algoritmo que le permita al usuario calcular el presupuesto de un PC armado por componentes (Disco, Monitor, Procesador), el usuario debe de poder elegir varios modelos de cada componente -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 4</title>
+  <style>
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form action="">
+    <div class="monitor">
+      <label for="monitor">Monitores disponibles</label>
+      <select name="monitor" id="monitor">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="500000">LG 1080p</option>
+        <option value="1000000">HP 2K</option>
+        <option value="1500000">Acer 4K</option>
+      </select>
+    </div>
+
+    <div class="storage">
+      <label for="storage">Unidades de Almacenamiento disponibles</label>
+      <select name="storage" id="storage">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="200000">HDD 2TB</option>
+        <option value="600000">SSD 2TB</option>
+        <option value="1200000">nvme m.2 2TB</option>
+      </select>
+    </div>
+
+    <div class="cpu">
+      <label for="cpu">CPU Disponibles</label>
+      <select name="cpu" id="cpu">
+        <option value=" - - - - - - - "> - - - - - - - </option>
+        <option value="600000">i5 12400</option>
+        <option value="1000000">i7 14400</option>
+        <option value="1200000">i9 14200</option>
+      </select>
+    </div>
+
+    <button type="button" id="button">Calcular presupuesto</button>
+  </form>
+  <p id="output"></p>
+
+
+  <script>
+    document.getElementById('button').addEventListener('click', () => {
+      let monitorChoice = parseFloat(document.getElementById('monitor').value);
+      let storgaeChoice = parseFloat(document.getElementById('storage').value);
+      let cpuChoice = parseFloat(document.getElementById('cpu').value);
+      let output = document.getElementById('output');
+
+      let calculation = (monitorChoice + storgaeChoice + cpuChoice);
+
+      output.textContent = `${calculation}$`
+    })
+
+  </script>
+</body>
+
+</html>

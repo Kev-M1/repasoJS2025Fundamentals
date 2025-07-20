@@ -11,10 +11,12 @@ let literalObject = {
 
 
 
-function getMethodsFromObject(obj) {
-    for (const key in obj) {
-        ((typeof (obj[key])) === 'function') ? console.log(`La propiedad (${key}) SI es un METODO`) : console.log((`La propiedad (${key}) NO es un METODO`));
+const getMethodsFromObject = (obj1) => {
+    for (const key in obj1) {
+        if (typeof (obj1[key]) == 'function') {
+            console.log(`Esta propiedad es un método. ${key}`);
+        }
     }
-}
+};
 
 getMethodsFromObject(literalObject);

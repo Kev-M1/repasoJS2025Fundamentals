@@ -1,17 +1,25 @@
 //Crear una función que permita dividir 2 numeros, debe emplearse manejo de excepciones y validaciones para anticiparse a posibles errores
 
 
-
-function divida(numerador, denominador) {
-  if (denominador == 0) {
-    throw new Error("No es posible dividir entre 0, Ingrese en denominador diferente de 0");
+const divideTheNumbers = (numerator, denominator) => {
+  if (typeof (numerator) !== 'number' || typeof (denominator) !== 'number') {
+    throw new Error("Valores invalidos, ingrese un numero");
   }
-  return (numerador / denominador);
-}
+  if (denominator === 0) {
+    throw new Error("No es posible dividir entre 0");
+  }
+  return (numerator / denominator);
+};
+
 
 
 try {
-  console.log(divida(5, 0));
+  const result = divideTheNumbers(32123134, 23);
+  console.log(result);
 } catch (error) {
   console.log(error.message);
-}
+};
+
+
+
+

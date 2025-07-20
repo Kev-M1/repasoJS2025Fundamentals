@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejercicio 3</title>
+  <title>Ejercicio3DOM</title>
   <style>
     body {
       background-color: #282c34;
@@ -16,25 +16,26 @@
 </head>
 
 <body>
+
   <form action="">
-    <select name="fruitsList" id="fruitsList">
-      <option value=" - - - - - - - "> - - - - - - - </option>
+    <label for="selectMenu">Eliga una opción</label>
+    <select name="selectMenu" id="selectMenu">
+      <option value=""> - - - - - - - - - - - - -</option>
+      <option value="frambuesa"> Frambuesa </option>
+      <option value="piña"> Piña </option>
       <option value="manzana"> Manzana </option>
-      <option value="naranja"> Naranja </option>
       <option value="pera"> Pera </option>
-      <option value="uva"> Uva </option>
-      <option value="toronja"> Toronja </option>
     </select>
   </form>
-  <p id="userChoice"></p>
-
+  <p id="result"></p>
 
   <script>
-    document.getElementById('fruitsList').addEventListener('change', () => {
-      let fruit = document.getElementById('fruitsList').value;
-      console.log(fruit);
-      let output = document.getElementById('userChoice');
-      output.textContent = fruit;
+    let selectMenu = document.querySelector('#selectMenu');
+
+    selectMenu.addEventListener('change', (event) => {
+      let userChoice = (document.querySelector('#selectMenu').value);
+      let resultBox = document.querySelector('#result');
+      resultBox.textContent = `${userChoice}`
     })
 
 

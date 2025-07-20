@@ -9,14 +9,13 @@
       const uruguayanCities = ['Montevideo', 'Salto', 'Paysandú', 'Maldonado', 'Tacuarembó', 'Rivera', 'Canelones', 'Durazno'];
 -->
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejercicio 7</title>
+  <title>Ejercicio7DOM</title>
   <style>
     body {
       background-color: #282c34;
@@ -26,67 +25,25 @@
 </head>
 
 <body>
-  <form action="">
-    <label for="country"> Seleccione un pais</label>
-    <select name="country" id="country">
-      <option value=" - - - - - - - - -"> - - - - - - - - -</option>
-      <option value="Mexico"> Mexico </option>
-      <option value="Colombia"> Colombia </option>
-      <option value="Argentina"> Argentina </option>
-      <option value="Uruguay"> Uruguay </option>
-    </select>
-    <label for="cities"> Seleccione una Ciudad</label>
-    <select name="cities" id="cities">
-      <option value=" - - - - - - - - -"> - - - - - - - - -</option>
-    </select>
-  </form>
+  <label for="countrySelect"> Selecciona un país </label>
+  <select name="countrySelect" id="countrySelect">
+    <option value=""> - - - - - - - - - - - </option>
+    <option value="mexico"> Mexico </option>
+    <option value="colombia"> Colombia </option>
+    <option value="argentina"> Argentina </option>
+    <option value="uruguay"> Uruguay </option>
+  </select>
+  <label for="citiesSelect"> Seleccione una ciudad</label>
+  <select name="citiesSelect" id="citiesSelect">
+    <option value=""> - - - - - - - - - - - </option>
+  </select>
+
 
 
   <script>
-    document.getElementById('country').addEventListener('change', (event) => {
-      let selectedCountry = (document.getElementById('country').value);
-      let citiesSelectNode = (document.getElementById('cities'));
-      citiesSelectNode.innerHTML = ``;
-      let citiesToShow = [];
-      console.log(selectedCountry);
 
-      const mexicanCities = ['Ciudad de México', 'Guadalajara', 'Monterrey', 'Puebla', 'Cancún', 'Tijuana', 'Mérida', 'San Luis Potosí'];
-      const colombianCities = ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena', 'Bucaramanga', 'Pereira', 'Santa Marta'];
-      const argentinianCities = ['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza', 'La Plata', 'San Miguel de Tucumán', 'Mar del Plata', 'Salta'];
-      const uruguayanCities = ['Montevideo', 'Salto', 'Paysandú', 'Maldonado', 'Tacuarembó', 'Rivera', 'Canelones', 'Durazno'];
-
-      switch (selectedCountry) {
-        case 'Mexico':
-          citiesToShow = mexicanCities;
-          break;
-        case 'Colombia':
-          citiesToShow = colombianCities;
-          break;
-        case 'Argentina':
-          citiesToShow = argentinianCities;
-          break;
-        case 'Uruguay':
-          citiesToShow = uruguayanCities;
-          break;
-        default:
-
-          break;
-      }
-
-      let newElement;
-      for (const city of citiesToShow) {
-        newElement = document.createElement('option');
-        newElement.innerText = `${city}`;
-        newElement.value = `${city}`;
-        citiesSelectNode.appendChild(newElement);
-      }
-    })
 
   </script>
-
-
-
-
 </body>
 
 </html>

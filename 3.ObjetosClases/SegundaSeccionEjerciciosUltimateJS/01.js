@@ -8,8 +8,7 @@ class User {
   }
 }
 
-
-let user1 = new User('Carlos', 32345);
-let user2 = new User('Roberto', 13142345);
+const user1 = new User('Andres', 235457);
+const user2 = new User('Juliana', 345567);
 console.log(user1);
 console.log(user2);
