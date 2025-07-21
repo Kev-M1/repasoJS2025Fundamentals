@@ -2,11 +2,12 @@
       Paises: Mexico, Colombia, Argentina, Uruguay
 
 
-      Ciudades:
-      const mexicanCities = ['Ciudad de México', 'Guadalajara', 'Monterrey', 'Puebla', 'Cancún', 'Tijuana', 'Mérida', 'San Luis Potosí'];
-      const colombianCities = ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena', 'Bucaramanga', 'Pereira', 'Santa Marta'];
-      const argentinianCities = ['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza', 'La Plata', 'San Miguel de Tucumán', 'Mar del Plata', 'Salta'];
-      const uruguayanCities = ['Montevideo', 'Salto', 'Paysandú', 'Maldonado', 'Tacuarembó', 'Rivera', 'Canelones', 'Durazno'];
+      const countriesList = {
+      mexico: ['Ciudad de México', 'Guadalajara', 'Monterrey', 'Puebla', 'Cancún', 'Tijuana', 'Mérida', 'San Luis Potosí'],
+      colombia: ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena', 'Bucaramanga', 'Pereira', 'Santa Marta'],
+      argentina: ['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza', 'La Plata', 'San Miguel de Tucumán', 'Mar del Plata', 'Salta'],
+      uruguay: ['Montevideo', 'Salto', 'Paysandú', 'Maldonado', 'Tacuarembó', 'Rivera', 'Canelones', 'Durazno'],
+    }
 -->
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejercicio7DOM</title>
+  <title> Ejercicio7DOM </title>
   <style>
     body {
       background-color: #282c34;
@@ -25,23 +26,48 @@
 </head>
 
 <body>
-  <label for="countrySelect"> Selecciona un país </label>
-  <select name="countrySelect" id="countrySelect">
-    <option value=""> - - - - - - - - - - - </option>
-    <option value="mexico"> Mexico </option>
-    <option value="colombia"> Colombia </option>
-    <option value="argentina"> Argentina </option>
-    <option value="uruguay"> Uruguay </option>
-  </select>
-  <label for="citiesSelect"> Seleccione una ciudad</label>
-  <select name="citiesSelect" id="citiesSelect">
-    <option value=""> - - - - - - - - - - - </option>
-  </select>
-
+  <div class="selctdiv">
+    <label for="countrySelect"> Seleccione un país </label>
+    <select name="countrySelect" id="countrySelect">
+      <option value=""> - - - - - - - - - - - - - - </option>
+      <option value="mexico"> México </option>
+      <option value="colombia"> Colombia </option>
+      <option value="argentina"> Argentina </option>
+      <option value="uruguay"> Uruguay </option>
+    </select>
+    <br>
+    <label for="citiesSelect"> Seleccione una ciudad </label>
+    <select name="citiesSelect" id="citiesSelect">
+      <option value=""> - - - - - - - - - - - - - - </option>
+    </select>
+  </div>
 
 
   <script>
+    //Ciudades
+    const countriesList = {
+      mexico: ['Ciudad de México', 'Guadalajara', 'Monterrey', 'Puebla', 'Cancún', 'Tijuana', 'Mérida', 'San Luis Potosí'],
+      colombia: ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena', 'Bucaramanga', 'Pereira', 'Santa Marta'],
+      argentina: ['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza', 'La Plata', 'San Miguel de Tucumán', 'Mar del Plata', 'Salta'],
+      uruguay: ['Montevideo', 'Salto', 'Paysandú', 'Maldonado', 'Tacuarembó', 'Rivera', 'Canelones', 'Durazno'],
+    }
 
+    const countrySelect = document.querySelector('#countrySelect');
+    let citiesSelect = document.querySelector('#citiesSelect');
+
+    countrySelect.addEventListener('change', (event) => {
+      citiesSelect.innerHTML = ``;
+      const chosenCountry = event.target.value;
+      const citiesToShow = countriesList[chosenCountry] || [];
+
+      let newNodeElement;
+      citiesToShow.forEach(city => {
+        newNodeElement = document.createElement('option');
+        newNodeElement.value = `${city}`;
+        newNodeElement.textContent = `${city}`;
+        citiesSelect.appendChild(newNodeElement);
+      });
+    })
 
   </script>
 </body>

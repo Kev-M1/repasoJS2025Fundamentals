@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora</title>
+  <title>Ejericico8DOM</title>
   <style>
     body {
       background-color: #282c34;
@@ -17,60 +17,54 @@
 </head>
 
 <body>
-  <h1>Calculadora</h1>
   <form action="">
-    <label for="number1">Numero 1</label>
-    <input type="text" name="number1" id="number1">
+    <label for="number1">Número1</label>
+    <input type="number" id="number1">
     <br> <br>
-    <label for="operation">Operación</label>
-    <select name="operation" id="operation">
-      <option value="----"> </option>
+    <label for="operationChoice"> Operación</label>
+    <select name="operationChoice" id="operationChoice">
       <option value="addition"> + </option>
       <option value="subtraction"> - </option>
       <option value="multiplication"> * </option>
       <option value="division"> / </option>
     </select>
     <br> <br>
-    <label for="number2">Numero 2</label>
-    <input type="text" name="number2" id="number2">
+    <label for="number2">Número2</label>
+    <input type="number" id="number2">
     <br> <br>
-    <button type="button" id="button">Resultado</button>
+    <button type="button" id="triggerButton"> Calcular </button>
   </form>
-  <p type="text" name="result" id="result"></p>
-
+  <p id="resultBox"></p>
 
 
 
   <script>
-    //Evento
-    document.getElementById('button').addEventListener('click', () => {
-      const number1 = parseFloat(document.getElementById('number1').value);;
-      const number2 = parseFloat(document.getElementById('number2').value);
-      const operation = (document.getElementById('operation').value);
-      const output = (document.getElementById('result'))
-      let calculation;
+    const triggerButton = document.querySelector('#triggerButton');
+    const resultBox = document.querySelector('#resultBox');
 
-      switch (operation) {
+    triggerButton.addEventListener('click', (event) => {
+      const number1 = parseFloat(document.querySelector('#number1').value);
+      const number2 = parseFloat(document.querySelector('#number2').value);
+      const operationChoice = (document.querySelector('#operationChoice').value);
+      let operationResult;
+
+      switch (operationChoice) {
         case 'addition':
-          calculation = (number1 + number2);
+          operationResult = (number1 + number2);
           break;
         case 'subtraction':
-          calculation = (number1 - number2);
+          operationResult = (number1 - number2);
           break;
         case 'multiplication':
-          calculation = (number1 * number2);
+          operationResult = (number1 * number2);
           break;
         case 'division':
-          calculation = (number1 / number2);
-          break;
-        default:
-          alert('Seleccione el tipo de operación que desea realizar')
+          operationResult = (number1 / number2);
           break;
       }
-
-
-      output.textContent = `${calculation}`
+      resultBox.textContent = `${operationResult}`
     })
+
   </script>
 </body>
 
