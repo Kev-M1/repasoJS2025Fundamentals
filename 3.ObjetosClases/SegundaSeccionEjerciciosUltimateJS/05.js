@@ -1,4 +1,4 @@
-// Crear una clase User que me permita crear objetos con los datos de los usuarios (Nombre, Id, Genero, edad(esta debe ser privada)) y que tenga un metodo saludar()
+// Crear una clase User que me permita crear objetos con los datos de los usuarios (Nombre, Id, Genero, edad(esta debe ser privada)) y que tenga un metodo saludar() (este debe actuar de la misma forma para ambas clases) y otro metodo planInfo(), el cual actuara de forma particular para cada situación
 // Luego una subclase que herede de esta y tenga una propiedad adicional
 
 
@@ -17,7 +17,11 @@ class User {
   }
 
   salute() {
-    console.log(`Hola, soy ${this.name} | id: ${this.id}, Genero: ${this.gender}.`);
+    console.log(`Hola soy ${this.name} mi edad es ${this.#age}`);
+  }
+
+  planInfo() {
+    console.log(`El usuario dispone del plan FREE`);
   }
 
   get getAge() {
@@ -26,40 +30,43 @@ class User {
 
   set setAge(newValue) {
     if (isNaN(newValue)) {
-      console.log('La edad debe ser un valor numerico')
+      console.log('El valor de la edad debe ser un numero entero positivo');
     } else {
       this.#age = newValue;
     }
   }
-
-
 }
 
-const maria = new User('Maria', 1232134, 'Femenino', 30);
-console.log(maria);
-maria.salute();
-console.log(maria.getAge);
-maria.setAge = 23;
-console.log(maria);
+
+const luisa = new User('Luisa', 3456456, 'F', 30);
+console.log(luisa);
+
+console.log(luisa.getAge);
+luisa.setAge = 21;
+console.log(luisa.getAge);
 
 
+//Herencia
+class UserPremium extends User {
+  activeMembership;
 
-class PremiumUser extends User {
-  membership;
-
-
-  constructor(membership, name, id, gender, age) {
+  constructor(name, id, gender, age, activeMembership) {
     super(name, id, gender, age);
-    this.membership = membership
+    this.activeMembership = activeMembership;
+  }
+
+  planInfo() {
+    if (this.activeMembership === true) {
+      console.log('El usuario dispone del plan PREMIUM');
+    } else {
+      super.planInfo();
+    }
   }
 }
 
+const carlos = new UserPremium('Carlos', 12334, 'M', 22, false)
+console.log(carlos);
+carlos.setAge = 50;
+console.log(carlos.getAge);
 
-
-const jose = new PremiumUser('Premium', 'Jose', 123355, 'Masculino', 49)
-console.log(jose);
-jose.salute()
-
-
-console.log(jose);
-
+carlos.salute();
